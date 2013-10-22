@@ -7,8 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "BarDataManager.h"
+
 
 @interface ViewController ()
+{
+    BarDataManager *_dataManager;
+}
+
 
 @end
 
@@ -18,6 +24,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _dataManager = [[BarDataManager alloc] init];
+    [_dataManager startLoadDataIfNeed];
+    
 }
 
 - (void)didReceiveMemoryWarning
