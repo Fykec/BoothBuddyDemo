@@ -7,6 +7,10 @@
 //
 
 #import "BarDataManager.h"
+#import "BarObject.h"
+
+#import <SBJson.h>
+
 
 @interface BarDataManager ()
 
@@ -25,10 +29,33 @@
                    {
                        NSHTTPURLResponse *response = nil;
                        NSError *error = nil;
-                       [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.boothbuddy.com/api/1/bar/search"]] returningResponse:&response error:&error];
+                       NSData *data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.boothbuddy.com/api/1/bar/search"]] returningResponse:&response error:&error];
                        
-                       if (response)
+                       if (response && [response statusCode] == 200 && data && [data length] > 0)
                        {
+                           NSObject * jsonObj = [[[SBJsonParser alloc] init] objectWithData:data];
+                           if ([jsonObj isKindOfClass:[NSDictionary class]])
+                           {
+                               NSDictionary *jsonDic = (NSDictionary *)jsonObj;
+                               if ([[jsonDic objectForKey:@"msg"] isEqualToString:@"ok"])
+                               {
+                                   NSArray *jsonArr = [jsonDic objectForKey:@"val"];
+                                   NSMutableArray *barArray = [[NSMutableArray alloc] init];
+                                   
+                                   for (NSDictionary *barJsonDic in jsonArr)
+                                   {
+                                       BarObject *bar = [BarObject objectFromJsonDic:barJsonDic];
+                                       if (bar)
+                                       {
+                                           [barArray addObject:bar];
+                                       }
+                                   }
+                                   
+                                   _bars = barArray;
+                                   
+                               }
+                               
+                           }
                            
                        }
                        

@@ -14,6 +14,10 @@
 
 @property (nonatomic, assign) CGFloat latitude;
 
+@property (nonatomic, assign) CGFloat minimalPrice;
+
 @property (nonatomic, retain) NSArray *images;
+
++ (BarObject *)objectFromJsonDic:(NSDictionary *)jsonDic;
 
 @end

@@ -16,4 +16,19 @@
     self.images = nil;
 }
 
++ (BarObject *)objectFromJsonDic:(NSDictionary *)jsonDic
+{
+    if (jsonDic && [[jsonDic allKeys] count] > 0)
+    {
+        BarObject *bar = [[BarObject alloc] init];
+        bar.name = [jsonDic objectForKey:@"name"];
+        bar.latitude = [[jsonDic objectForKey:@"latitude"] floatValue];
+        bar.images = [jsonDic objectForKey:@"pictures"];
+        bar.minimalPrice = [[jsonDic objectForKey:@"minimal_price"] floatValue];
+        return bar;
+    }
+    
+    return nil;
+}
+
 @end
