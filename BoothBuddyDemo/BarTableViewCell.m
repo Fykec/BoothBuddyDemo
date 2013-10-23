@@ -61,11 +61,13 @@
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _nameLabel.textColor = [UIColor whiteColor];
         _nameLabel.font = [UIFont systemFontOfSize:14];
+        _nameLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
         [innerView addSubview:_nameLabel];
         
         _distanceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _distanceLabel.textColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
         _distanceLabel.font = [UIFont systemFontOfSize:13];
+        _distanceLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         [innerView addSubview:_distanceLabel];
     }
     return self;
@@ -100,11 +102,8 @@
     CGSize distanceTextSize = [_distanceLabel sizeThatFits:self.bounds.size];
     _distanceLabel.frame = CGRectMake(_distanceLabel.superview.bounds.size.width - 6 - distanceTextSize.width, 7, distanceTextSize.width, distanceTextSize.height);
     
-    self.detailTextLabel.text = [NSString stringWithFormat:@"$%f",bar.minimalPrice];
-    
     _scrollview.contentSize = CGSizeMake(_scrollview.frame.size.width * [[bar images] count], _scrollview.frame.size.height);
 
-    
     NSMutableArray *imageViews = [[NSMutableArray alloc] init];
     
     NSUInteger count = [[bar images] count];

@@ -183,10 +183,13 @@
 #pragma mark -
 #pragma mark BarDataLoadDelegate
 
-- (void)barDataDidLoadFinished
+- (void)barDataDidLoadFinishedIsCache:(BOOL)isCache
 {
     [self.tableView reloadData];
-    [self doneLoadingTableViewData];
+    if (!isCache)
+    {
+        [self doneLoadingTableViewData];
+    }
 }
 
 - (void)barDataDidLoadFailed:(NSError *)error

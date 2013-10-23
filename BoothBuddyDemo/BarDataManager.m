@@ -57,11 +57,19 @@
     return nil;
 }
 
+- (NSString*)getDocumentsFilePath:(NSString*)name//User can view this folder in iTunes
+{
+	NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+	NSString *filePath = [documentsDirectory stringByAppendingPathComponent:name];
+	
+	return filePath;
+}
+
 - (void)startLoadDataIfNeed
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
                    {
-                       NSData *oldData = [NSData dataWithContentsOfFile:CACHE_FILE_NAME];
+                       NSData *oldData = [NSData dataWithContentsOfFile:[self getDocumentsFilePath:CACHE_FILE_NAME]];
                        if (oldData && [oldData length] > 0)
                        {
                            _bars = [self parseBarsFromData:oldData];
@@ -69,9 +77,9 @@
                                           {
                                               if (_bars && [_bars count] > 0)
                                               {
-                                                  if (self.delegate && [self.delegate respondsToSelector:@selector(barDataDidLoadFinished)])
+                                                  if (self.delegate && [self.delegate respondsToSelector:@selector(barDataDidLoadFinishedIsCache:)])
                                                   {
-                                                      [self.delegate barDataDidLoadFinished];
+                                                      [self.delegate barDataDidLoadFinishedIsCache:YES];
                                                   }
                                               }
                                           });
@@ -84,7 +92,7 @@
                        if (response && [response statusCode] == 200 && data && [data length] > 0)
                        {
                            _bars = [self parseBarsFromData:data];
-                           [data writeToFile:CACHE_FILE_NAME atomically:YES];
+                           [data writeToFile:[self getDocumentsFilePath:CACHE_FILE_NAME] atomically:YES];
                        }
                        
                        dispatch_async(dispatch_get_main_queue(), ^(void)
@@ -99,9 +107,9 @@
                                           
                                           if (_bars && [_bars count] > 0)
                                           {
-                                              if (self.delegate && [self.delegate respondsToSelector:@selector(barDataDidLoadFinished)])
+                                              if (self.delegate && [self.delegate respondsToSelector:@selector(barDataDidLoadFinishedIsCache:)])
                                               {
-                                                  [self.delegate barDataDidLoadFinished];
+                                                  [self.delegate barDataDidLoadFinishedIsCache:NO];
                                               }
                                           }
                                           

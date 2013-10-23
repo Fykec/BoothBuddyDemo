@@ -10,7 +10,7 @@
 
 @protocol BarDataDelegate <NSObject>
 
-- (void)barDataDidLoadFinished;
+- (void)barDataDidLoadFinishedIsCache:(BOOL)isCache;
 
 @optional
 - (void)barDataDidLoadFailed:(NSError *)error;
