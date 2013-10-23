@@ -59,12 +59,14 @@
         textBackgroundView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.65f];
         [innerView addSubview:textBackgroundView];
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _nameLabel.backgroundColor = [UIColor clearColor];
         _nameLabel.textColor = [UIColor whiteColor];
         _nameLabel.font = [UIFont systemFontOfSize:14];
         _nameLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
         [innerView addSubview:_nameLabel];
         
         _distanceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _distanceLabel.backgroundColor = [UIColor clearColor];
         _distanceLabel.textColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
         _distanceLabel.font = [UIFont systemFontOfSize:13];
         _distanceLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -148,6 +150,7 @@
         imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         imageView.imageURL = [NSURL URLWithString:[_images objectAtIndex:page]];
+        
         [_imageViews replaceObjectAtIndex:page withObject:imageView];
     }
     
