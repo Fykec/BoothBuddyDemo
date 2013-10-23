@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+extern NSString *LocationDidUpdateNotif;
+
+
 @interface LocationManager : NSObject
 
 + (id)sharedInstance;

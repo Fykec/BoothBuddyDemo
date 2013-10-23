@@ -8,6 +8,8 @@
 
 #import "LocationManager.h"
 
+NSString *LocationDidUpdateNotif = @"kNotifLocationDidUpdate";
+
 @interface LocationManager () <CLLocationManagerDelegate>
 {
     CLLocationManager *_locationManager;
@@ -39,8 +41,6 @@
         _locationManager = [[CLLocationManager alloc] init];
         _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        
-        
     }
     return self;
 }
@@ -63,6 +63,8 @@
 {
     CLLocation* location = [locations lastObject];
     _currentLocation = location;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LocationDidUpdateNotif object:nil];
 }
 
 @end

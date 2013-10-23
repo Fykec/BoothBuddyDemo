@@ -10,6 +10,7 @@
 #import "BarDataManager.h"
 #import "BarObject.h"
 #import "BarTableViewCell.h"
+#import "LocationManager.h"
 
 
 @interface ViewController () <EGORefreshTableHeaderDelegate, BarDataDelegate>
@@ -62,6 +63,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLocationDidUpdate) name:LocationDidUpdateNotif object:nil];
     
 	if (_refreshHeaderView == nil) {
 		
@@ -213,6 +216,11 @@
     [_indicatorView stopAnimating];
 }
 
+
+- (void)onLocationDidUpdate
+{
+    [self.tableView reloadData];
+}
 
 #pragma mark -
 #pragma mark Memory Management
