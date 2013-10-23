@@ -2,6 +2,9 @@
 #Author Yinjiaji
 #Email yinjiaji110@gmail.com
 
+PROFILE_SIGN="iPhone Distribution: DAN ZHOU(6RH4H94576)"
+PROFILE_PATH="AllPartner_Adhoc.mobileprovision"
+
 checkFailed()
 {
     INFO="$1"
@@ -13,13 +16,13 @@ checkFailed()
 }
 
 CURRENTDIR=`pwd`
-ROOTPATH="$CURRENTDIR/iDolphin"
+ROOTPATH="$CURRENTDIR/BoothBuddyDemo"
 
 CONFIGURATION="Release"
 
 SDK="iphoneos"
 
-PROFILE_SIGN=""
+
 MASTER_BRANCH="master"
 GITSERVER=""
 PREPROCESSOR_MACROS='$(value)'"$(printf 'BUILD_NUMBER=%q ' "${BUILD_NO}")"
@@ -42,32 +45,13 @@ buildAndArchive()
     /usr/bin/xcrun -sdk $SDK PackageApplication -v build/${CONFIGURATION}-iphoneos/${TARGET}.app -o "${ROOTPATH}/${TARGET}/build/${CONFIGURATION}-iphoneos/${TARGET}.ipa" --sign "$CODE_SIGN" --embed "${CURRENTDIR}/${PROFILE_NAME}"
     checkFailed "\n\nBUILD FAILED! IPA target failed."
     
-    mv ${ROOTPATH}/${TARGET}/build/${CONFIGURATION}-iphoneos/${TARGET}.ipa ${SERVER_BUILDS_PATH}${PACKAGE_PREFIX}${BUILD_NO}.ipa
+    mv ${ROOTPATH}/${TARGET}/build/${CONFIGURATION}-iphoneos/${TARGET}.ipa ${ROOTPATH}/${PACKAGE_PREFIX}BoothBuddyDemo.ipa
 
-    echo $BUILD_NO > ${LAST_BUILD_NO_FILE_KEY}
-    mv ${LAST_BUILD_NO_FILE_KEY} ${SERVER_BUILDS_PATH}${LAST_BUILD_NO_FILE_KEY}
-    rm -f ${LAST_BUILD_NO_FILE_KEY}
     popd
 }
 
 
-pushd ${CURRENTDIR}
-
-rm -rf ${ROOTPATH}
-
-git clone -b ${MASTER_BRANCH} ${GITSERVER} ${ROOTPATH}
-
-checkFailed "Clone ${MASTER_BRANCH} FAILED!"
-
-echo "${MASTER_BRANCH} branch change log:" > ${CURRENTDIR}/changelog.log
-
-pushd ${ROOTPATH}
-
-git log --since="1 days ago" >> ${CURRENTDIR}/changelog.log
-
-#################master iPhone xuanfeng###################
-
-buildAndArchive "DolphiniPhone" "$PROFILE_SIGN" "$IPHONE_CHINESE_XUANFENG_PROFILE_NAME" "DolphinChineseiPhone" "iPhoneChineseLatest"
+buildAndArchive "BoothBuddyDemo" "${PROFILE_SIGN}" "${PROFILE_PATH}"
 
 popd
 popd

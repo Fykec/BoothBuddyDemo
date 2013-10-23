@@ -6,19 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		9CA92CAD1817AFCB00330EAF /* AppleDoc */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 9CA92CAE1817AFCC00330EAF /* Build configuration list for PBXAggregateTarget "AppleDoc" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = AppleDoc;
-			productName = AppleDoc;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		8E14456BECE24287A79D0720 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5085FC6C4A35457E852AF59F /* libPods.a */; };
 		9C0D02961816B5EA008BFD5B /* BarObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D02951816B5EA008BFD5B /* BarObject.m */; };
@@ -269,7 +256,6 @@
 			targets = (
 				9C6230441816A8340033EDB3 /* BoothBuddyDemo */,
 				9C6230681816A8340033EDB3 /* BoothBuddyDemoTests */,
-				9CA92CAD1817AFCB00330EAF /* AppleDoc */,
 			);
 		};
 /* End PBXProject section */
@@ -433,6 +419,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "64B79717-D750-44F7-BE88-2A34C6FFF551";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -455,7 +442,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DAN ZHOU (6RH4H94576)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -466,6 +453,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "64B79717-D750-44F7-BE88-2A34C6FFF551";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -544,20 +532,6 @@
 			};
 			name = Release;
 		};
-		9CA92CAF1817AFCC00330EAF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		9CA92CB01817AFCC00330EAF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -587,14 +561,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		9CA92CAE1817AFCC00330EAF /* Build configuration list for PBXAggregateTarget "AppleDoc" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9CA92CAF1817AFCC00330EAF /* Debug */,
-				9CA92CB01817AFCC00330EAF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
