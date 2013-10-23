@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BarObject : NSObject <NSCoding>
+@interface BarObject : NSObject
 
 /*
  ####酒吧名字

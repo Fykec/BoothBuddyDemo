@@ -22,6 +22,8 @@
 	BOOL _reloading;
     
     BarDataManager *_dataManager;
+    
+    UIActivityIndicatorView *_indicatorView;
 }
 
 
@@ -71,12 +73,24 @@
 		
 	}
     
+    if (_indicatorView == nil)
+    {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _indicatorView.center = [self view].center;
+        _indicatorView.hidesWhenStopped = YES;
+        _indicatorView.autoresizingMask =
+        UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin
+        | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        [self.view addSubview:_indicatorView];
+    }
+    
     if (_dataManager == nil)
     {
         _dataManager = [[BarDataManager alloc] init];
         _dataManager.delegate = self;
     }
 	
+    [_indicatorView startAnimating];
 	//  update the last update date
 	[self reloadTableViewDataSource];
 }
@@ -190,11 +204,13 @@
     {
         [self doneLoadingTableViewData];
     }
+    
+    [_indicatorView stopAnimating];
 }
 
 - (void)barDataDidLoadFailed:(NSError *)error
 {
-    
+    [_indicatorView stopAnimating];
 }
 
 
