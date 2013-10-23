@@ -1,4 +1,4 @@
 platform :ios
 
-pod "SBJSON"
+pod "SBJson"
 pod "EGOTableViewPullRefresh"

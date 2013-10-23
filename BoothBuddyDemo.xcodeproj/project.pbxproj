@@ -25,6 +25,9 @@
 		9C62306D1816A8340033EDB3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C62304C1816A8340033EDB3 /* UIKit.framework */; };
 		9C6230751816A8340033EDB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C6230731816A8340033EDB3 /* InfoPlist.strings */; };
 		9C6230771816A8340033EDB3 /* BoothBuddyDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6230761816A8340033EDB3 /* BoothBuddyDemoTests.m */; };
+		9CA92CA91817950A00330EAF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA92CA81817950A00330EAF /* MapKit.framework */; };
+		9CA92CAC1817991300330EAF /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA92CAB1817991300330EAF /* LocationManager.m */; };
+		9CC5476F181765D8007A5405 /* BarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5476E181765D8007A5405 /* BarTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,12 @@
 		9C6230721816A8340033EDB3 /* BoothBuddyDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BoothBuddyDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9C6230741816A8340033EDB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C6230761816A8340033EDB3 /* BoothBuddyDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoothBuddyDemoTests.m; sourceTree = "<group>"; };
+		9CA92CA81817950A00330EAF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9CA92CAA1817991300330EAF /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		9CA92CAB1817991300330EAF /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		9CC5476D181765D8007A5405 /* BarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarTableViewCell.h; sourceTree = "<group>"; };
+		9CC5476E181765D8007A5405 /* BarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarTableViewCell.m; sourceTree = "<group>"; };
+		9CC547701817664E007A5405 /* BarAPIConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarAPIConst.h; sourceTree = "<group>"; };
 		E3CBE152AB4C4CFD920622A4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CA92CA91817950A00330EAF /* MapKit.framework in Frameworks */,
 				9C62304B1816A8340033EDB3 /* CoreGraphics.framework in Frameworks */,
 				9C62304D1816A8340033EDB3 /* UIKit.framework in Frameworks */,
 				9C6230491816A8340033EDB3 /* Foundation.framework in Frameworks */,
@@ -114,6 +124,7 @@
 		9C6230471816A8340033EDB3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CA92CA81817950A00330EAF /* MapKit.framework */,
 				9C6230481816A8340033EDB3 /* Foundation.framework */,
 				9C62304A1816A8340033EDB3 /* CoreGraphics.framework */,
 				9C62304C1816A8340033EDB3 /* UIKit.framework */,
@@ -136,6 +147,11 @@
 				9C62305D1816A8340033EDB3 /* Main_iPad.storyboard */,
 				9C6230601816A8340033EDB3 /* ViewController.h */,
 				9C6230611816A8340033EDB3 /* ViewController.m */,
+				9CC5476D181765D8007A5405 /* BarTableViewCell.h */,
+				9CC5476E181765D8007A5405 /* BarTableViewCell.m */,
+				9CC547701817664E007A5405 /* BarAPIConst.h */,
+				9CA92CAA1817991300330EAF /* LocationManager.h */,
+				9CA92CAB1817991300330EAF /* LocationManager.m */,
 				9C6230631816A8340033EDB3 /* Images.xcassets */,
 				9C62304F1816A8340033EDB3 /* Supporting Files */,
 			);
@@ -305,8 +321,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6230621816A8340033EDB3 /* ViewController.m in Sources */,
+				9CA92CAC1817991300330EAF /* LocationManager.m in Sources */,
 				9C0D02991816B74E008BFD5B /* BarDataManager.m in Sources */,
 				9C6230591816A8340033EDB3 /* AppDelegate.m in Sources */,
+				9CC5476F181765D8007A5405 /* BarTableViewCell.m in Sources */,
 				9C0D02961816B5EA008BFD5B /* BarObject.m in Sources */,
 				9C6230551816A8340033EDB3 /* main.m in Sources */,
 			);

@@ -7,6 +7,7 @@
 //
 
 #import "BarObject.h"
+#import "BarAPIConst.h"
 
 @implementation BarObject
 
@@ -23,7 +24,15 @@
         BarObject *bar = [[BarObject alloc] init];
         bar.name = [jsonDic objectForKey:@"name"];
         bar.latitude = [[jsonDic objectForKey:@"latitude"] floatValue];
-        bar.images = [jsonDic objectForKey:@"pictures"];
+        bar.longitude = [[jsonDic objectForKey:@"longitude"] floatValue];
+        
+        NSMutableArray *pics = [NSMutableArray array];
+        for (NSString *picSuffix in [jsonDic objectForKey:@"pictures"])
+        {
+            [pics addObject:[NSString stringWithFormat:@"%@%@", BAR_IMAGE_API_PATH_PREFIX, picSuffix]];
+        }
+        bar.images = pics;
+        
         bar.minimalPrice = [[jsonDic objectForKey:@"minimal_price"] floatValue];
         return bar;
     }

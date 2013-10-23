@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import <AsyncImageView.h>
+#import "LocationManager.h"
+
+@interface AppDelegate ()
+
+
+@end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [[AsyncImageLoader sharedLoader] setConcurrentLoads:15];
+    [[LocationManager sharedInstance] fetchCurrentLocation];
     return YES;
 }
 							

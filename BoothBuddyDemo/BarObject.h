@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BarObject : NSObject
+@interface BarObject : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString* name;
 
 @property (nonatomic, assign) CGFloat latitude;
+
+@property (nonatomic, assign) CGFloat longitude;
 
 @property (nonatomic, assign) CGFloat minimalPrice;
 

@@ -14,3 +14,17 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define IsAtLeastiOSVersion(X) ([[[UIDevice currentDevice] systemVersion] compare:X options:NSNumericSearch] != NSOrderedAscending)
+
+#define STATUS_BAR_HEIGHT 20
+
+#if defined(__IPHONE_7_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
+
+#define CONTENT_TOP_MARGIN (IsAtLeastiOSVersion(@"7.0")? STATUS_BAR_HEIGHT: 0)
+
+#else
+
+#define CONTENT_TOP_MARGIN 0
+
+#endif

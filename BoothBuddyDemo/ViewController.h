@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EGORefreshTableHeaderView.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource>
+{
+}
 
 @end
