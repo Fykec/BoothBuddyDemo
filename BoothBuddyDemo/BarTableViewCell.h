@@ -11,6 +11,10 @@
 
 @interface BarTableViewCell : UITableViewCell
 
+/*
+ @brief 根据酒吧信息刷新cell的视图
+ @param bar， 酒吧的信息
+ */
 - (void)reloadDataWithBar:(BarObject *)bar;
 
 @end

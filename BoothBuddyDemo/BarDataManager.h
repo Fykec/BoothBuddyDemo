@@ -23,6 +23,10 @@
 
 @property (nonatomic, readonly) NSArray *bars;;
 
+/*
+ @brief 加载获取server端的数据
+
+ */
 - (void)startLoadDataIfNeed;
 
 @end

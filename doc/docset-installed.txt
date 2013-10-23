@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/jjyin/Library/Developer/Shared/Documentation/DocSets/com.bbtechgroup.BoothBuddyDemo.docset
+Time: 2013-10-23 07:30:24 +0000
