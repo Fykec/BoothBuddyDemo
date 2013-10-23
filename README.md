@@ -9,7 +9,7 @@
 7. 注意用户体验;(第一没有数据时没有数据时加了界面中间indicator，数据做了缓存，第二次可以直接用)
 8. 附带测试用例, 并进行单元测试或者UI测试;
 9. 使用CocoaPods进行依赖管理;(OK)
-10. 自动构建脚本;
+10. 自动构建脚本;(Part of, can build app, not full automatic)
 11. 注释文档生成;(OK)
 
 
@@ -19,5 +19,11 @@
 
 
 ##Auto Build Script
-1. copy your profile the folder
-2. edit the script 
+1. Copy your profile the folder
+2. Edit the bb_build.sh
+
+		PROFILE_SIGN="your sign"
+		PROFILE_PATH="your profile name"
+3. Run
+
+		./bb_build.sh

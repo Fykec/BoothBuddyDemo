@@ -2,8 +2,6 @@
 #Author Yinjiaji
 #Email yinjiaji110@gmail.com
 
-PROFILE_SIGN="iPhone Distribution: DAN ZHOU(6RH4H94576)"
-PROFILE_PATH="AllPartner_Adhoc.mobileprovision"
 
 checkFailed()
 {
@@ -15,8 +13,15 @@ checkFailed()
     fi;
 }
 
+$ENV{CODESIGN_ALLOCATE} = '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate'
+
 CURRENTDIR=`pwd`
 ROOTPATH="$CURRENTDIR/BoothBuddyDemo"
+WORKSPACE_NAME="BoothBuddyDemo.xcworkspace"
+SCHEME_NAME="BoothBuddyDemo"
+PROFILE_SIGN=""
+PROFILE_PATH=""
+
 
 CONFIGURATION="Release"
 
@@ -32,27 +37,16 @@ buildAndArchive()
     TARGET="$1" #folder and target
     CODE_SIGN="$2"
     PROFILE_NAME="$3"
-    PACKAGE_PREFIX="$4"
-    LAST_BUILD_NO_FILE_KEY="$5"
-
-    pushd ${ROOTPATH}/${TARGET}
 
     # agvtool bump -all
-    xcodebuild GCC_PREPROCESSOR_DEFINITIONS=${PREPROCESSOR_MACROS} -configuration $CONFIGURATION -arch "armv7" -target ${TARGET} -sdk $SDK CODE_SIGN_IDENTITY="$CODE_SIGN"
+    xcodebuild -workspace ${WORKSPACE_NAME} -scheme ${SCHEME_NAME} GCC_PREPROCESSOR_DEFINITIONS=${PREPROCESSOR_MACROS} -configuration $CONFIGURATION -arch "armv7"  -sdk $SDK CODE_SIGN_IDENTITY="$CODE_SIGN" build
     checkFailed "\n\nBUILD FAILED! Compilation/${TARGET} target failed."
 
     # NB! xcrun NEEDS absolute paths to -o and --embed params !
     /usr/bin/xcrun -sdk $SDK PackageApplication -v build/${CONFIGURATION}-iphoneos/${TARGET}.app -o "${ROOTPATH}/${TARGET}/build/${CONFIGURATION}-iphoneos/${TARGET}.ipa" --sign "$CODE_SIGN" --embed "${CURRENTDIR}/${PROFILE_NAME}"
-    checkFailed "\n\nBUILD FAILED! IPA target failed."
     
     mv ${ROOTPATH}/${TARGET}/build/${CONFIGURATION}-iphoneos/${TARGET}.ipa ${ROOTPATH}/${PACKAGE_PREFIX}BoothBuddyDemo.ipa
-
-    popd
 }
 
-
 buildAndArchive "BoothBuddyDemo" "${PROFILE_SIGN}" "${PROFILE_PATH}"
-
-popd
-popd
 
